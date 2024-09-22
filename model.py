@@ -1,9 +1,9 @@
 # Copyright 2019-2020 by Andrey Ignatov. All Rights Reserved.
+from datetime import datetime
 
 import tensorflow as tf
-import numpy as np
 
-
+tf.compat.v1.disable_eager_execution()
 def PyNET(input, instance_norm=True, instance_norm_level_1=False):
 
     # Note: the paper uses a different layer naming scheme.
@@ -251,5 +251,3 @@ def _conv_tranpose_layer(net, num_filters, filter_size, strides):
     return leaky_relu(net)
 
 
-def max_pool(x, n):
-    return tf.nn.max_pool(x, ksize=[1, n, n, 1], strides=[1, n, n, 1], padding='VALID')
